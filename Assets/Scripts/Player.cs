@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
 
     private bool canJumpInThisScene;
-    public bool canMove = true;
+    public bool canMove = false;
 
     void Start()
     {

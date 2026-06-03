@@ -20,7 +20,7 @@ public class NPC : MonoBehaviour
     void Update()
     {
         // Jika dialog sedang aktif, NPC tidak menerima input
-        if (DialogueManager.Instance.IsDialogueActive())
+        if (DialogueManager.instance.IsDialogueActive())
             return;
 
         // Tunggu tombol F dilepas dulu
@@ -48,7 +48,7 @@ public class NPC : MonoBehaviour
 
         Debug.Log("INTERACT");
 
-        DialogueManager.Instance.StartDialogue(dialogue);
+        DialogueManager.instance.StartDialogue(dialogue);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,7 +57,7 @@ public class NPC : MonoBehaviour
         {
             playerInRange = true;
 
-            if (!DialogueManager.Instance.IsDialogueActive())
+            if (!DialogueManager.instance.IsDialogueActive())
             {
                 interactionText.SetActive(true);
             }

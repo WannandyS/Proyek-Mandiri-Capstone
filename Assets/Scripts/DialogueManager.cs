@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
-    public static DialogueManager Instance;
+    public static DialogueManager instance;
 
     public GameObject dialoguePanel;
     public TMP_Text dialogueText;
@@ -15,10 +15,12 @@ public class DialogueManager : MonoBehaviour
 
     private bool dialogueActive = false;
     public bool dialogueJustClosed;
+    private bool showTutorialAfterDialogue;
+
 
     private void Awake()
     {
-        Instance = this;
+        instance = this;
     }
 
     private void Start()
@@ -52,13 +54,17 @@ public class DialogueManager : MonoBehaviour
         return dialogueActive;
     }
 
-    public void StartDialogue(string[] lines)
+    public void StartDialogue(string[] lines, bool showTutorial = false)
     {
         if (dialogueActive)
             return;
 
+        Objective.instance.HideObjective();
+
         currentLines = lines;
         currentIndex = 0;
+
+        showTutorialAfterDialogue = showTutorial;
 
         dialogueActive = true;
 
@@ -95,5 +101,21 @@ public class DialogueManager : MonoBehaviour
         dialogueActive = false;
 
         dialogueJustClosed = true;
+
+        if (showTutorialAfterDialogue)
+        {
+            Invoke(nameof(ShowTutorial), 0.1f);
+
+            showTutorialAfterDialogue = false;
+        }
+        else
+        {
+            Objective.instance.ShowObjective();
+        }
+    }
+
+    private void ShowTutorial()
+    {
+        Tutorial.instance.ShowTutorial("Pergi mandi");
     }
 }
