@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     private bool dialogueActive = false;
     public bool dialogueJustClosed;
     private bool showTutorialAfterDialogue;
-
+    private bool waitForKeyRelease;
 
     private void Awake()
     {
@@ -42,6 +42,15 @@ public class DialogueManager : MonoBehaviour
 
         if (!dialogueActive)
             return;
+
+        if (waitForKeyRelease)
+        {
+            if (!Input.GetKey(KeyCode.F))
+            {
+                waitForKeyRelease = false;
+            }
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -69,6 +78,7 @@ public class DialogueManager : MonoBehaviour
         dialogueActive = true;
 
         dialoguePanel.SetActive(true);
+        waitForKeyRelease = true;
 
         player.canMove = false;
 

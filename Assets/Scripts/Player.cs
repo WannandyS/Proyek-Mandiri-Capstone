@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    public GameObject gameOverPanel;
+    private bool isDead = false;
+
     private bool canJumpInThisScene;
     public bool canMove = false;
 
@@ -30,6 +33,11 @@ public class Player : MonoBehaviour
         if (!canMove)
             return;
 
+        if (!isDead && transform.position.y <= -5.9f)
+        {
+            GameOver();
+        }
+
         movement = Input.GetAxis("Horizontal");
         transform.position += new Vector3 (movement, 0, 0) * Time.deltaTime * speed;
 
@@ -45,6 +53,15 @@ public class Player : MonoBehaviour
         {
             rb.linearVelocity = new Vector2 (rb.linearVelocity.x, jumpHeight);
         }
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("Player fall into the hole");
+        isDead = true;
+        canMove = false;
+        rb.linearVelocity = Vector2.zero;
+        gameOverPanel.LeanMoveLocalY(0f, 0.8f).setEaseOutExpo();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
