@@ -26,6 +26,11 @@ public class Player : MonoBehaviour
 
         canJumpInThisScene =
             sceneName == "Street";
+
+        if (sceneName != "Street")
+        {
+            gameOverPanel.SetActive(false);
+        }
     }
 
     void Update()
@@ -62,6 +67,7 @@ public class Player : MonoBehaviour
         canMove = false;
         rb.linearVelocity = Vector2.zero;
         gameOverPanel.LeanMoveLocalY(0f, 0.8f).setEaseOutExpo();
+        gameOverPanel.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

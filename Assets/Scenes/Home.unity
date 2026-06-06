@@ -376,10 +376,10 @@ GameObject:
   - component: {fileID: 616055104}
   - component: {fileID: 616055103}
   - component: {fileID: 616055106}
-  - component: {fileID: 616055105}
+  - component: {fileID: 616055107}
   m_Layer: 0
   m_Name: Toilet
-  m_TagString: Untagged
+  m_TagString: Toilet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -457,19 +457,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &616055105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616055102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cfe48339638d9f448bda6c3bb8475bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Toilet
-  interactionText: {fileID: 1813174866}
 --- !u!61 &616055106
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -516,6 +503,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &616055107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616055102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11143d378f116f49a100928bc8e9408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interaction
+  interactionText: {fileID: 1813174866}
+  dialogue: []
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,11 +1771,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1935154906}
   - component: {fileID: 1935154905}
-  - component: {fileID: 1935154907}
   - component: {fileID: 1935154908}
+  - component: {fileID: 1935154909}
   m_Layer: 0
   m_Name: ExitDoor
-  m_TagString: Untagged
+  m_TagString: LeaveHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1852,19 +1853,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1935154907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935154904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35333d47558479f48822a42e94a8eb1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  interactionText: {fileID: 934281938}
 --- !u!61 &1935154908
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1911,6 +1899,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1935154909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935154904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11143d378f116f49a100928bc8e9408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interaction
+  interactionText: {fileID: 934281938}
+  dialogue: []
 --- !u!1 &2113419181
 GameObject:
   m_ObjectHideFlags: 0

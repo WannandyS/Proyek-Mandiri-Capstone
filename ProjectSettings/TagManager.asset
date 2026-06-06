@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - LeaveHouse
+  - Toilet
+  - NPC
+  - EnterOffice
+  - Boss
+  - WorkDesk
   layers:
   - Default
   - TransparentFX

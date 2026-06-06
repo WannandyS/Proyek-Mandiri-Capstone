@@ -368,27 +368,14 @@ GameObject:
   m_Component:
   - component: {fileID: 73112827}
   - component: {fileID: 73112826}
-  - component: {fileID: 73112825}
+  - component: {fileID: 73112828}
   m_Layer: 0
   m_Name: EnterOffice
-  m_TagString: Untagged
+  m_TagString: EnterOffice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &73112825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73112824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f8e451927d0ef0428ade9c3eeee8ca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  interactionText: {fileID: 1854433106}
 --- !u!61 &73112826
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -450,6 +437,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &73112828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73112824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11143d378f116f49a100928bc8e9408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interaction
+  interactionText: {fileID: 1854433106}
+  dialogue: []
 --- !u!1 &143300903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,6 +1406,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4714456896898579828, guid: 363e9e797ce86f44aa3b22fc0753e17d, type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
     - target: {fileID: 8055521883368809221, guid: 363e9e797ce86f44aa3b22fc0753e17d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.84
@@ -1445,11 +1450,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2276136509034115292, guid: 363e9e797ce86f44aa3b22fc0753e17d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4714456896898579828, guid: 363e9e797ce86f44aa3b22fc0753e17d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1681811407}
   m_SourcePrefab: {fileID: 100100000, guid: 363e9e797ce86f44aa3b22fc0753e17d, type: 3}
+--- !u!1 &1681811406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4714456896898579828, guid: 363e9e797ce86f44aa3b22fc0753e17d, type: 3}
+  m_PrefabInstance: {fileID: 1681811405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1681811407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681811406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11143d378f116f49a100928bc8e9408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interaction
+  interactionText: {fileID: 1580136790}
+  dialogue:
+  - Hari yang cerah ya
 --- !u!1 &1690704311
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,6 +2322,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 4714456896898579828, guid: 363e9e797ce86f44aa3b22fc0753e17d, type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
     - target: {fileID: 8055521883368809221, guid: 363e9e797ce86f44aa3b22fc0753e17d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.59
@@ -2333,11 +2366,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2276136509034115292, guid: 363e9e797ce86f44aa3b22fc0753e17d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4714456896898579828, guid: 363e9e797ce86f44aa3b22fc0753e17d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9217478814638494385}
   m_SourcePrefab: {fileID: 100100000, guid: 363e9e797ce86f44aa3b22fc0753e17d, type: 3}
+--- !u!1 &9217478814638494384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4714456896898579828, guid: 363e9e797ce86f44aa3b22fc0753e17d, type: 3}
+  m_PrefabInstance: {fileID: 9217478814638494383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9217478814638494385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9217478814638494384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11143d378f116f49a100928bc8e9408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interaction
+  interactionText: {fileID: 1566396636}
+  dialogue:
+  - Awas ada lubang
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
