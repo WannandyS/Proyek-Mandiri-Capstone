@@ -183,9 +183,10 @@ public class Interaction : MonoBehaviour
 
     public void GoToWorkDesk()
     {
-        if (Quest.instance.questStage < 3)
+        if (Quest.instance.questStage != 3)
             return;
 
+        WorkProgress.stage = 0;
         StartCoroutine(ChangeScene("WorkDesk"));
     }
 

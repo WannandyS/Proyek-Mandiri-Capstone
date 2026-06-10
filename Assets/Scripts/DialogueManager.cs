@@ -25,7 +25,10 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        dialoguePanel.SetActive(false);
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(false);
+        }
 
         player = FindFirstObjectByType<Player>();
     }
@@ -68,7 +71,10 @@ public class DialogueManager : MonoBehaviour
         if (dialogueActive)
             return;
 
-        Objective.instance.HideObjective();
+        if (Objective.instance != null)
+        {
+            Objective.instance.HideObjective();
+        }
 
         currentLines = lines;
         currentIndex = 0;
@@ -77,12 +83,22 @@ public class DialogueManager : MonoBehaviour
 
         dialogueActive = true;
 
-        dialoguePanel.SetActive(true);
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(true);
+        }
+
         waitForKeyRelease = true;
 
-        player.canMove = false;
+        if (player != null)
+        {
+            player.canMove = false;
+        }
 
-        dialogueText.text = currentLines[currentIndex];
+        if (dialogueText != null && currentLines.Length > 0)
+        {
+            dialogueText.text = currentLines[currentIndex];
+        }
     }
 
     private void NextLine()
@@ -99,17 +115,25 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        dialogueText.text = currentLines[currentIndex];
+        if (dialogueText != null)
+        {
+            dialogueText.text = currentLines[currentIndex];
+        }
     }
 
     private void EndDialogue()
     {
-        dialoguePanel.SetActive(false);
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(false);
+        }
 
-        player.canMove = true;
+        if (player != null)
+        {
+            player.canMove = true;
+        }
 
         dialogueActive = false;
-
         dialogueJustClosed = true;
 
         if (showTutorialAfterDialogue)
@@ -120,12 +144,18 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            Objective.instance.ShowObjective();
+            if (Objective.instance != null)
+            {
+                Objective.instance.ShowObjective();
+            }
         }
     }
 
     private void ShowTutorial()
     {
-        Tutorial.instance.ShowTutorial("Pergi mandi");
+        if (Tutorial.instance != null)
+        {
+            Tutorial.instance.ShowTutorial("Pergi mandi");
+        }
     }
 }

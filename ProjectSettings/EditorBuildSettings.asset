@@ -17,6 +17,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorkDesk.unity
     guid: c53c18846e1e8fa4a8e347a3b9cb0444
+  - enabled: 1
+    path: Assets/Scenes/MinigameEasy.unity
+    guid: 94d7e9c36c095ba4597ce07c493ff467
+  - enabled: 1
+    path: Assets/Scenes/MinigameHard.unity
+    guid: 3b15a8ab401bf6b4abf9fc36b0161b4a
+  - enabled: 1
+    path: Assets/Scenes/AfterOffice.unity
+    guid: 961e236c5c7c7ef459eba66a2d206a42
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
