@@ -75,6 +75,12 @@ public class Interaction : MonoBehaviour
             LeaveHouse();
         }
 
+        //interact keluar kantor
+        if (gameObject.tag == "LeaveOffice")
+        {
+            StartCoroutine(ChangeScene("CutsceneHouse"));
+        }
+
         //interact masuk ke kantor
         if (gameObject.tag == "EnterOffice")
         {
@@ -175,7 +181,7 @@ public class Interaction : MonoBehaviour
         Debug.Log("Pindah scene " + sceneName);
         FindFirstObjectByType<Player>().canMove = false;
 
-        yield return StartCoroutine(Fade.instance.FadeOut(1f));
+        yield return StartCoroutine(Fade.instance.FadeOut(1.5f));
         yield return new WaitForSeconds(1);
 
         SceneManager.LoadScene(sceneName);

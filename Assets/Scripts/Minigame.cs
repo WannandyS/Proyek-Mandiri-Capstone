@@ -9,7 +9,11 @@ public class Minigame : MonoBehaviour
 
     private int collected;
 
-    // Update is called once per frame
+    IEnumerator Start()
+    {
+        yield return Fade.instance.StartCoroutine(Fade.instance.FadeIn(1f));
+        yield return new WaitForSeconds(1f);
+    }
     void Update()
     {
         timer -= Time.deltaTime;

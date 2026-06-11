@@ -13,7 +13,7 @@ public class CutsceneWorkDesk : MonoBehaviour
 
     IEnumerator StartCutscene()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         if (WorkProgress.stage == 0)
         {
@@ -27,7 +27,7 @@ public class CutsceneWorkDesk : MonoBehaviour
             DialogueManager.instance.StartDialogue(dialogue);
 
             yield return StartCoroutine(WaitDialogue());
-            yield return StartCoroutine(Fade.instance.FadeOut(1f));
+            yield return StartCoroutine(Fade.instance.FadeOut(1.5f));
 
             SceneManager.LoadScene("MinigameEasy");
         } else if (WorkProgress.stage == 1)
@@ -43,7 +43,7 @@ public class CutsceneWorkDesk : MonoBehaviour
             DialogueManager.instance.StartDialogue(dialogue);
 
             yield return StartCoroutine(WaitDialogue());
-            yield return StartCoroutine(Fade.instance.FadeOut(1f));
+            yield return StartCoroutine(Fade.instance.FadeOut(1.5f));
 
             SceneManager.LoadScene("MinigameHard");
         } else if (WorkProgress.stage == 2)
@@ -59,7 +59,7 @@ public class CutsceneWorkDesk : MonoBehaviour
             DialogueManager.instance.StartDialogue(dialogue);
 
             yield return StartCoroutine(WaitDialogue());
-            yield return StartCoroutine(Fade.instance.FadeOut(1f));
+            yield return StartCoroutine(Fade.instance.FadeOut(1.5f));
 
             SceneManager.LoadScene("AfterOffice");
         }
