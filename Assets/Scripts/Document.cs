@@ -5,7 +5,7 @@ public class Document : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "Player")
+        if (!collision.CompareTag("Player"))
             return;
 
         string sceneName = SceneManager.GetActiveScene().name;
@@ -16,9 +16,8 @@ public class Document : MonoBehaviour
                 return;
 
             Quest.instance.documentCollected++;
-            Destroy(gameObject);
 
-            if (Quest.instance.documentCollected >= 2)
+            if (Quest.instance.documentCollected >= 1)
             {
                 Objective.instance.SetObjective("Kembali ke bos");
                 Quest.instance.questStage = 2;
@@ -32,7 +31,14 @@ public class Document : MonoBehaviour
                 minigame.CollectDocument();
             }
 
-            Destroy(gameObject);
+            if (sceneName == "MinigameHard")
+            {
+                if (Spawner.instance != null)
+                {
+                    Spawner.instance.OnDocumentCollected();
+                }
+            }
         }
+        Destroy(gameObject);
     }
 }

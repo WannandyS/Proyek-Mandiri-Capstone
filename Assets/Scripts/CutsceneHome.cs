@@ -49,6 +49,6 @@ public class CutsceneHome : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        SceneManager.LoadScene("Balcony");
+        SceneManager.LoadScene("Ending");
     }
 }

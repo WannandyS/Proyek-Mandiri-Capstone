@@ -25,7 +25,9 @@ public class Player : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
 
         canJumpInThisScene =
-            sceneName == "Street";
+            sceneName == "Street" ||
+            sceneName == "MinigameEasy" ||
+            sceneName == "MinigameHard";
 
         if (sceneName != "Street")
         {
