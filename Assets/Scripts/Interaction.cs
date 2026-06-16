@@ -5,7 +5,7 @@ using System.Collections;
 public class Interaction : MonoBehaviour
 {
     public GameObject interactionText;
-    
+
     [TextArea(3, 5)]
     public string[] dialogue;
 
@@ -18,7 +18,6 @@ public class Interaction : MonoBehaviour
         interactionText.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (DialogueManager.instance.IsDialogueActive())
@@ -49,7 +48,6 @@ public class Interaction : MonoBehaviour
 
         Debug.Log("Interact: " + gameObject.tag);
 
-        //interact untuk NPC
         if (gameObject.tag == "NPC")
         {
             DialogueManager.instance.StartDialogue(dialogue);
@@ -60,7 +58,6 @@ public class Interaction : MonoBehaviour
             BossInteraction();
         }
 
-        //interact untuk masuk ke toilet
         if (gameObject.tag == "Toilet")
         {
             if (!alreadyUsed)
@@ -69,19 +66,16 @@ public class Interaction : MonoBehaviour
             }
         }
 
-        //interact keluar rumah
         if (gameObject.tag == "LeaveHouse")
         {
             LeaveHouse();
         }
 
-        //interact keluar kantor
         if (gameObject.tag == "LeaveOffice")
         {
             StartCoroutine(ChangeScene("CutsceneHouse"));
         }
 
-        //interact masuk ke kantor
         if (gameObject.tag == "EnterOffice")
         {
             StartCoroutine(ChangeScene("Office"));
@@ -99,16 +93,20 @@ public class Interaction : MonoBehaviour
         {
             string[] dialogue =
             {
-                "Nah, akhirnya kamu datang tepat waktu", "Ada pekerjaan untukmu", "Tolong ambilkan 2 dokumen di meja"
+                "Nah, akhirnya kamu datang tepat waktu",
+                "Ada pekerjaan untukmu",
+                "Tolong ambilkan 2 dokumen di meja"
             };
 
             DialogueManager.instance.StartDialogue(dialogue);
+
             Objective.instance.SetObjective("Ambil 2 Dokumen");
+
             Quest.instance.questStage = 1;
             Quest.instance.document1.SetActive(true);
             Quest.instance.document2.SetActive(true);
-
-        } else if (Quest.instance.questStage == 1)
+        }
+        else if (Quest.instance.questStage == 1)
         {
             string[] dialogue =
             {
@@ -116,19 +114,23 @@ public class Interaction : MonoBehaviour
             };
 
             DialogueManager.instance.StartDialogue(dialogue);
-
-        } else if (Quest.instance.questStage == 2)
+        }
+        else if (Quest.instance.questStage == 2)
         {
             string[] dialogue =
             {
-                "Bagus", "Dokumennya sudah lengkap", "Sekarang pergi ke meja kerjamu"
+                "Bagus",
+                "Dokumennya sudah lengkap",
+                "Sekarang pergi ke meja kerjamu"
             };
 
             DialogueManager.instance.StartDialogue(dialogue);
-            Objective.instance.SetObjective("Pergi ke meja");
-            Quest.instance.questStage = 3;
 
-        } else if (Quest.instance.questStage == 3)
+            Objective.instance.SetObjective("Pergi ke meja");
+
+            Quest.instance.questStage = 3;
+        }
+        else if (Quest.instance.questStage == 3)
         {
             string[] dialogue =
             {
@@ -141,48 +143,41 @@ public class Interaction : MonoBehaviour
 
     public void LeaveHouse()
     {
-        if (!Objective.instance.canLeaveHouse)
-        {
-            string[] dialogue =
-            {
-                "Aku belum siap berangkat"
-            };
-
-            DialogueManager.instance.StartDialogue(dialogue);
-            return;
-        }
-
         StartCoroutine(ChangeScene("Street"));
     }
 
     IEnumerator ToiletQuest()
     {
         alreadyUsed = true;
-        FindFirstObjectByType<Player>().canMove = false;
+
+        Player player = FindFirstObjectByType<Player>();
+
+        if (player != null)
+        {
+            player.canMove = false;
+        }
 
         yield return StartCoroutine(Fade.instance.FadeOut(1f));
-        yield return new WaitForSeconds(1);
-        yield return StartCoroutine(Fade.instance.FadeIn(1f));
 
-        FindFirstObjectByType<Player>().canMove = true;
+        yield return new WaitForSeconds(0.5f);
 
-        string[] toiletDialogue =
-        {
-            "Sudah lebih segar sekarang", "Sudah pakai jas juga", "Saatnya berangkat"
-        };
-
-        DialogueManager.instance.StartDialogue(toiletDialogue);
-        Objective.instance.canLeaveHouse = true;
-        Objective.instance.SetObjective("Keluar rumah");
+        SceneManager.LoadScene("AfterQuestToilet");
     }
 
     IEnumerator ChangeScene(string sceneName)
     {
         Debug.Log("Pindah scene " + sceneName);
-        FindFirstObjectByType<Player>().canMove = false;
+
+        Player player = FindFirstObjectByType<Player>();
+
+        if (player != null)
+        {
+            player.canMove = false;
+        }
 
         yield return StartCoroutine(Fade.instance.FadeOut(1.5f));
-        yield return new WaitForSeconds(1);
+
+        yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene(sceneName);
     }
@@ -193,15 +188,16 @@ public class Interaction : MonoBehaviour
             return;
 
         WorkProgress.stage = 0;
+
         StartCoroutine(ChangeScene("WorkDesk"));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
             playerInRange = true;
-            
+
             if (!DialogueManager.instance.IsDialogueActive())
             {
                 interactionText.SetActive(true);
@@ -216,7 +212,7 @@ public class Interaction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
             playerInRange = false;
             interactionText.SetActive(false);
