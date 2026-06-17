@@ -45,10 +45,6 @@ public class Spawner : MonoBehaviour
 
         Debug.Log("Spawn di : " + spawnPoints[randomIndex].name);
 
-        Instantiate(
-            document,
-            spawnPoints[randomIndex].position,
-            Quaternion.identity
-        );
+        Instantiate(document, spawnPoints[randomIndex].position, Quaternion.identity);
     }
 }

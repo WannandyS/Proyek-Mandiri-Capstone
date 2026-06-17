@@ -17,7 +17,7 @@ public class Document : MonoBehaviour
 
             Quest.instance.documentCollected++;
 
-            if (Quest.instance.documentCollected >= 1)
+            if (Quest.instance.documentCollected >= 2)
             {
                 Objective.instance.SetObjective("Kembali ke bos");
                 Quest.instance.questStage = 2;
@@ -33,10 +33,14 @@ public class Document : MonoBehaviour
 
             if (sceneName == "MinigameHard")
             {
+                Destroy(gameObject);
+
                 if (Spawner.instance != null)
                 {
                     Spawner.instance.OnDocumentCollected();
                 }
+
+                return;
             }
         }
         Destroy(gameObject);

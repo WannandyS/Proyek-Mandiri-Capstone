@@ -95,11 +95,13 @@ public class Player : MonoBehaviour
             gameOverPanel.SetActive(true);
             gameOverPanel.LeanMoveLocalY(0f, 0.8f).setEaseOutExpo();
         }
+
+        Destroy(this.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.tag == "Ground")
         {
             isGround = true;
         }
@@ -112,7 +114,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.tag == "Ground")
         {
             isGround = false;
         }
