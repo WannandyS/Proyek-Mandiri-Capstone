@@ -5,15 +5,18 @@ using System.Collections;
 public class CutsceneHome : MonoBehaviour
 {
     public GameObject player;
+    private Animator animator;
 
     IEnumerator Start()
     {
+        animator = player.GetComponent<Animator>();
         player.SetActive(false);
 
         yield return StartCoroutine(Fade.instance.FadeIn(1f));
         yield return new WaitForSeconds(1f);
 
         player.SetActive(true);
+        player.transform.localScale = new Vector3(-1f, 1f, 1f);
 
         yield return new WaitForSeconds(2f);
         yield return AutoDialogue.instance.ShowDialogue(
@@ -36,18 +39,32 @@ public class CutsceneHome : MonoBehaviour
 
     IEnumerator WalkAndFade()
     {
-        float targetX = -3f;
+        float targetX = 1f;
+        float fadeTrigger = 6.5f;
+        bool fadeStart = false;
+        Player playerScript = player.GetComponent<Player>();
 
-        StartCoroutine(Fade.instance.FadeOut(2f));
+        if(playerScript != null )
+        {
+            playerScript.enabled = false;
+        }
 
-        while (player.transform.position.x > targetX)
+        animator.SetFloat("Walk", 1);
+
+        while (player.transform.position.x >= targetX)
         {
             player.transform.Translate(Vector2.left * 2f * Time.deltaTime);
+
+            if (!fadeStart && player.transform.position.x <= fadeTrigger)
+            {
+                fadeStart = true;
+                StartCoroutine(Fade.instance.FadeOut(2f));
+            }
 
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.5f);
+        animator.SetFloat("Walk", 0);
 
         SceneManager.LoadScene("Ending");
     }

@@ -7,6 +7,9 @@ public class Ending : MonoBehaviour
 {
     public GameObject panel;
     public TMP_Text endingText;
+    public Camera mainCamera;
+    public float cameraMoveDistance = 5f;
+    public float cameraMoveDuration = 3f;
 
     IEnumerator Start()
     {
@@ -18,10 +21,29 @@ public class Ending : MonoBehaviour
         yield return AutoDialogue.instance.ShowDialogue("teks 2", 3);
         yield return AutoDialogue.instance.ShowDialogue("teks 3", 3);
 
-        yield return StartCoroutine(Fade.instance.FadeOut(1.5f));
+        yield return StartCoroutine(CameraMoveFade());
         panel.SetActive(true);
 
         StartCoroutine(ShowEndingText());
+    }
+
+    IEnumerator CameraMoveFade()
+    {
+        Vector3 startPos = mainCamera.transform.position;
+        Vector3 targetPos = startPos + new Vector3(0f, cameraMoveDistance, 0f);
+
+        float timer = 0f;
+
+        StartCoroutine(Fade.instance.FadeOut(cameraMoveDuration));
+
+        while (timer < cameraMoveDuration)
+        {
+            timer += Time.deltaTime;
+
+            mainCamera.transform.position = Vector3.Lerp(startPos, targetPos, timer / cameraMoveDuration);
+
+            yield return null;
+        }
     }
 
     IEnumerator ShowEndingText()
