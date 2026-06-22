@@ -51,11 +51,13 @@ public class Interaction : MonoBehaviour
         if (gameObject.tag == "NPC")
         {
             DialogueManager.instance.StartDialogue(dialogue);
+            FindFirstObjectByType<AudioManager>().PlayCharacterSound();
         }
 
         if (gameObject.tag == "Boss")
         {
             BossInteraction();
+            FindFirstObjectByType<AudioManager>().PlayCharacterSound();
         }
 
         if (gameObject.tag == "Toilet")
@@ -64,11 +66,13 @@ public class Interaction : MonoBehaviour
             {
                 StartCoroutine(ToiletQuest());
             }
+            FindAnyObjectByType<AudioManager>().PlayDoorSound();
         }
 
         if (gameObject.tag == "LeaveHouse")
         {
             LeaveHouse();
+            FindAnyObjectByType<AudioManager>().PlayDoorSound();
         }
 
         if (gameObject.tag == "LeaveOffice")
@@ -79,6 +83,7 @@ public class Interaction : MonoBehaviour
         if (gameObject.tag == "EnterOffice")
         {
             StartCoroutine(ChangeScene("Office"));
+            FindAnyObjectByType<AudioManager>().PlayDoorSound();
         }
 
         if (gameObject.tag == "WorkDesk")

@@ -34,6 +34,7 @@ public class Document : MonoBehaviour
             if (sceneName == "MinigameHard")
             {
                 Destroy(gameObject);
+                FindFirstObjectByType<AudioManager>().PlayCollectSound();
 
                 if (Spawner.instance != null)
                 {
@@ -44,5 +45,6 @@ public class Document : MonoBehaviour
             }
         }
         Destroy(gameObject);
+        FindFirstObjectByType<AudioManager>().PlayCollectSound();
     }
 }

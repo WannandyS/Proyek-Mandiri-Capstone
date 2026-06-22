@@ -14,12 +14,16 @@ public class Ending : MonoBehaviour
     IEnumerator Start()
     {
         panel.SetActive(false);
-        yield return StartCoroutine(Fade.instance.FadeIn(1));
+        yield return StartCoroutine(Fade.instance.FadeIn(3.5f));
         yield return new WaitForSeconds(1);
 
-        yield return AutoDialogue.instance.ShowDialogue("teks 1", 3);
-        yield return AutoDialogue.instance.ShowDialogue("teks 2", 3);
-        yield return AutoDialogue.instance.ShowDialogue("teks 3", 3);
+        FindFirstObjectByType<AudioManager>().PlayCharacterSound();
+        yield return AutoDialogue.instance.ShowDialogue("Akhirnya bisa beristirahat", 3);
+        FindFirstObjectByType<AudioManager>().PlayCharacterSound();
+        yield return AutoDialogue.instance.ShowDialogue("Tapi besok kerjaan pasti akan datang lagi", 3);
+        FindFirstObjectByType<AudioManager>().PlayCharacterSound();
+        yield return AutoDialogue.instance.ShowDialogue("Tapi setidaknya aku bisa beristirahat untuk sesaat hari ini", 3);
+        
 
         yield return StartCoroutine(CameraMoveFade());
         panel.SetActive(true);

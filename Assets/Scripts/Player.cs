@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
         }
 
         animator.SetBool("Jump", true);
+        FindAnyObjectByType<AudioManager>().PlayJumpSound();
     }
 
     public void GameOver()
@@ -97,6 +98,7 @@ public class Player : MonoBehaviour
         }
 
         Destroy(this.gameObject);
+        FindFirstObjectByType<AudioManager>().PlayFallSound();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

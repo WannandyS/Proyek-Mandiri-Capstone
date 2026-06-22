@@ -8,6 +8,7 @@ public class AfterToiletQuest : MonoBehaviour
         yield return StartCoroutine(Fade.instance.FadeIn(1f));
 
         yield return new WaitForSeconds(0.5f);
+        FindFirstObjectByType<AudioManager>().PlayCharacterSound();
 
         string[] dialogue =
         {

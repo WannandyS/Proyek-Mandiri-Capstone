@@ -8,7 +8,7 @@ public class Tutorial : MonoBehaviour
 
     public Player player;
     private string nextObjective;
-    
+
     private void Awake()
     {
         instance = this;
@@ -42,6 +42,7 @@ public class Tutorial : MonoBehaviour
         {
             player.canMove = false;
         }
+        FindAnyObjectByType<AudioManager>().PlayTutorialSound();
     }
 
     private void CloseTutorial()

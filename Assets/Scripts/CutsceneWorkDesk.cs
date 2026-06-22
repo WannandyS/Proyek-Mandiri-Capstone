@@ -4,7 +4,6 @@ using System.Collections;
 
 public class CutsceneWorkDesk : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Debug.Log("Cutscene workdesk start");
@@ -25,6 +24,7 @@ public class CutsceneWorkDesk : MonoBehaviour
             };
 
             DialogueManager.instance.StartDialogue(dialogue);
+            FindFirstObjectByType<AudioManager>().PlayCharacterSound();
 
             yield return StartCoroutine(WaitDialogue());
             yield return StartCoroutine(Fade.instance.FadeOut(1.5f));
@@ -41,6 +41,7 @@ public class CutsceneWorkDesk : MonoBehaviour
             };
 
             DialogueManager.instance.StartDialogue(dialogue);
+            FindFirstObjectByType<AudioManager>().PlayCharacterSound();
 
             yield return StartCoroutine(WaitDialogue());
             yield return StartCoroutine(Fade.instance.FadeOut(1.5f));
@@ -57,6 +58,7 @@ public class CutsceneWorkDesk : MonoBehaviour
                 "Aku hanya ingin pulang"
             };
             DialogueManager.instance.StartDialogue(dialogue);
+            FindFirstObjectByType<AudioManager>().PlayCharacterSound();
 
             yield return StartCoroutine(WaitDialogue());
             yield return StartCoroutine(Fade.instance.FadeOut(1.5f));

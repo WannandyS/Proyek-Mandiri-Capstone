@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
     public static MainMenu instance;
 
     public GameObject mainMenuPanel;
+    public GameObject titleText;
     public Animator playerAnimator;
 
     private void Awake()
@@ -16,8 +17,10 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         mainMenuPanel.SetActive(false);
+        titleText.SetActive(false);
 
         StartCoroutine(StartWakeup());
+        FindAnyObjectByType<AudioManager>().PlayButtonSound();
     }
 
     IEnumerator StartWakeup()
@@ -25,6 +28,7 @@ public class MainMenu : MonoBehaviour
         playerAnimator.SetTrigger("WakeUp");
 
         yield return new WaitForSeconds(2f);
+        FindFirstObjectByType<AudioManager>().PlayCharacterSound();
 
         string[] intro =
         {
@@ -38,5 +42,6 @@ public class MainMenu : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+        FindAnyObjectByType<AudioManager>().PlayButtonSound();
     }
 }

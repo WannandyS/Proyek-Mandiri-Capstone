@@ -16,23 +16,18 @@ public class CutsceneHome : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         player.SetActive(true);
+        FindAnyObjectByType<AudioManager>().PlayDoorSound();
         player.transform.localScale = new Vector3(-1f, 1f, 1f);
 
-        yield return new WaitForSeconds(2f);
-        yield return AutoDialogue.instance.ShowDialogue(
-            "Akhirnya sampai rumah...",
-            3f
-        );
+        yield return new WaitForSeconds(1.5f);
+        FindFirstObjectByType<AudioManager>().PlayCharacterSound();
+        yield return AutoDialogue.instance.ShowDialogue("Akhirnya sampai rumah...", 3f);
+        
+        FindFirstObjectByType<AudioManager>().PlayCharacterSound();
+        yield return AutoDialogue.instance.ShowDialogue("Hari ini benar-benar melelahkan", 3f);
 
-        yield return AutoDialogue.instance.ShowDialogue(
-            "Hari ini benar-benar melelahkan.",
-            3f
-        );
-
-        yield return AutoDialogue.instance.ShowDialogue(
-            "Aku hanya ingin beristirahat sekarang.",
-            3f
-        );
+        FindFirstObjectByType<AudioManager>().PlayCharacterSound();
+        yield return AutoDialogue.instance.ShowDialogue("Aku hanya ingin beristirahat sekarang", 3f);
 
         yield return StartCoroutine(WalkAndFade());
     }
